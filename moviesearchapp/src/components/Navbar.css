@@ -34,7 +34,7 @@
 }
 
 #result-list{
-   /* display: none; */
+   display: none;
     position: absolute;
     background-color: whitesmoke;
     font-size: medium;

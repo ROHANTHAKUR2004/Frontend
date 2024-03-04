@@ -1,24 +1,10 @@
-import { useEffect, useState } from "react";
 import MovieCard from "../components/Moviecard/MovieCard";
 import './Home.css';
-import { searchmovie } from "../Apis/omdb";
-import axios from "axios";
+
+import useMovielist from "../hooks/useMovielist";
 function Homes(){
 
-    const[movielist , setmovielist] = useState([]);
-  
-   async function downloaddefaultmovies(...args){
-    const urls = args.map((name) => searchmovie(name));
-
-        const response = await axios.all(urls.map(url => axios.get(url)));
-        const movies  = response.map((movieResponse) => movieResponse.data.Search)
-        setmovielist( [].concat(...movies));
-    }
-
-    useEffect(()=>{
-         downloaddefaultmovies('money ','avengers');
-        
-    },[]);
+    const {movielist} = useMovielist('money', 'harry');
       
     return(
         <div className="movie-card-wrapper">
