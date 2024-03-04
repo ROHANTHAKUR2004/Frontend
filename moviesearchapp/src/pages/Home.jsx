@@ -16,7 +16,7 @@ function Homes(){
     }
 
     useEffect(()=>{
-         downloaddefaultmovies('harry','avengers');
+         downloaddefaultmovies('money ','avengers');
         
     },[]);
       

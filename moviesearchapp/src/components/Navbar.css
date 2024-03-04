@@ -28,3 +28,24 @@
       background-color: var(--light-prime-blue);
       border-radius: 5px;
 }
+
+.search-bar{
+    position: relative;
+}
+
+#result-list{
+   /* display: none; */
+    position: absolute;
+    background-color: whitesmoke;
+    font-size: medium;
+    color: black;
+    width: 100%;
+}
+#result-list > .autocomplete-result{
+    font-size: large;
+    letter-spacing: 0;
+    margin-bottom: .5rem;
+    padding: .5rem;
+    border-bottom: 1px solid black;
+    border-radius: 10px;
+}
