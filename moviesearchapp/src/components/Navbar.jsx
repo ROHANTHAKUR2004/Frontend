@@ -3,6 +3,8 @@ import './Navbar.css';
 import useMovielist from '../hooks/useMovielist';
 import useDebounce from '../hooks/useDebounce';
 import { Link, useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar(){
 
@@ -54,7 +56,7 @@ function Navbar(){
                 </div>
                 </div>
                 <div>
-                    theme
+                    <FontAwesomeIcon icon={faMoon}/>
                 </div>
             
 
