@@ -12,6 +12,7 @@ function Homes(){
          {movielist.length > 0 &&  movielist.map(movie => <MovieCard  
          
          key = {movie.imdbID}
+         id = {movie.imdbID}
          {...movie}
          
          

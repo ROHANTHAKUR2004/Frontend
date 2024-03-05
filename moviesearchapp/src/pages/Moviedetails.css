@@ -1,0 +1,26 @@
+.movie-details-wrapper{
+    margin-top: 3rem;
+    margin-left: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.movie-details{
+   
+    color: white;
+    flex-basis: 50%;
+    font-size: x-large;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 0 auto;
+}
+
+.genre{
+    border: 1px solid blue;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background-color: blue;
+    margin-right: 1rem;
+}
