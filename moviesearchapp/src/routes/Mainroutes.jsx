@@ -8,7 +8,7 @@ function Mainroutes(){
     <Routes>
         <Route  path='/'  element={<Homes/>} />
 
-        <Route  path='/movie/:name' element={<MovieDetails/>} />
+        <Route  path='/movie/:id' element={<MovieDetails/>} />
 
         <Route path='*' element={ <Error/>} />
     </Routes>

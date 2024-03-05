@@ -52,3 +52,16 @@
     border-bottom: 1px solid black;
     border-radius: 10px;
 }
+
+.movie-base-title{
+    color: white;
+}
+
+.movie-base-title > a{
+    color: white;
+    text-decoration: none;
+}
+
+.autocomplete-result:hover{
+    background-color:gainsboro;
+}
