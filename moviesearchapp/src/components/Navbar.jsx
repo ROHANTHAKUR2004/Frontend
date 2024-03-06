@@ -1,10 +1,15 @@
-import { useRef, useState } from 'react';
+import { useRef, useState ,useContext} from 'react';
 import './Navbar.css';
 import useMovielist from '../hooks/useMovielist';
 import useDebounce from '../hooks/useDebounce';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+
+
+import ThemeContext from '../context/ThemeContext';
+
+
 
 function Navbar(){
 
@@ -12,6 +17,8 @@ function Navbar(){
     const[searchterm, setsearchterm] = useState("");
     const {movielist} = useMovielist(searchterm);
     const navigator = useNavigate();
+
+    const{theme, settheme} = useContext(ThemeContext);
 
 
     function handleautocompleteclick(e, movieImdbId){
@@ -55,8 +62,8 @@ function Navbar(){
                     
                 </div>
                 </div>
-                <div>
-                    <FontAwesomeIcon icon={faMoon}/>
+                <div onClick={()=> settheme((theme == 'dark') ? 'light' : 'dark')}>
+                    <FontAwesomeIcon className="theme-icon" icon={(theme == 'dark') ? faSun : faMoon}/>
                 </div>
             
 
