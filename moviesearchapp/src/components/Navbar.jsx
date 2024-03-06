@@ -26,6 +26,17 @@ function Navbar(){
           //console.log(movieImdbId);
     }
 
+    function updatetheme(){
+    if(theme =='dark'){
+        settheme('light');
+        localStorage.setItem('app-theme', 'light');
+    }
+    else{
+        settheme('dark');
+        localStorage.setItem('app-theme', 'dark');
+
+    }
+    }
 
     return(
         <div className="navbar-wrapper">
@@ -62,7 +73,7 @@ function Navbar(){
                     
                 </div>
                 </div>
-                <div onClick={()=> settheme((theme == 'dark') ? 'light' : 'dark')}>
+                <div onClick={updatetheme}>
                     <FontAwesomeIcon className="theme-icon" icon={(theme == 'dark') ? faSun : faMoon}/>
                 </div>
             
