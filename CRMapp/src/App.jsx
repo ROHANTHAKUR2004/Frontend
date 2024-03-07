@@ -1,6 +1,7 @@
-import './App.css'
-import Login from './pages/auth/Login'
-import Signup from './pages/auth/Signup'
+import './App.css';
+
+import Signup from './pages/auth/Signup';
+
 
 function App() {
   
@@ -9,7 +10,7 @@ function App() {
         {/* <Login/> */}
         <Signup/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
