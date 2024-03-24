@@ -8,7 +8,7 @@ function Login(){
            <input type="text" placeholder="User id.." className="input text-black input-bordered bg-white input-primary w-full max-w-xs" />
            <input type="password" placeholder="Password.." className="input text-black input-bordered bg-white input-primary w-full max-w-xs" />
            <div className="card-actions justify-end ">
-            <button className="btn mt-4 btn-warning w-full font-bold text-xl ">Submit</button>
+            <button className="btn mt-4 btn-warning w-full  font-bold text-xl">Submit</button>
           </div>
         </div>
         </div>
