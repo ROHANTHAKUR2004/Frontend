@@ -10,9 +10,9 @@ const initialState = {
 };
 
 
- export const login = createAsyncThunk('/auth/login' , async (data) =>{
+ export const login = createAsyncThunk("/auth/login" , async (data) =>{
     try {
-        const response = await axiosInstance.post('auth/signin' , data);
+        const response = await axiosInstance.post("auth/signin", data);
         return response;
     } catch (error) {
          console.log(error);
