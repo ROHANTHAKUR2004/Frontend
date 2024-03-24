@@ -13,6 +13,7 @@ function Signup(){
                 <summary className="  btn">User Type</summary>
                 <ul className="p-2 shadow menu text-white dropdown-content z-[1] bg-base-100 rounded-box w-52">
                   <li><a>Customer</a></li>
+                  <li><a>Admin</a></li>
                   <li><a>Engineer</a></li>
                 </ul>
             </details>
