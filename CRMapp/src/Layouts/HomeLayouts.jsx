@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { LuMenuSquare } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
@@ -16,6 +17,10 @@ export default function HomeLayout({children}){
         navigate("/login");
         
     }
+
+    useEffect(()=>{
+            if(!authState.isloggedin) navigate("/login");
+    },[]);
 
     return(
         <div className="min-h-[90vh]">
