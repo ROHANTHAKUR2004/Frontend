@@ -1,4 +1,5 @@
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -34,8 +35,18 @@ function resetloginstate(){
     if(!logindetails.email || !logindetails.password) return;
     console.log("calling" , logindetails);
      const response =  await dispatch(login(logindetails));
-     if(response.payload) navigate("/");
-     else resetloginstate();
+     if(response.payload){
+      toast.success("Succesfully LoggedIn..",{
+        position:'top-right'
+      });
+      navigate("/");
+     }
+     else{
+      toast.error("Something Wrong ,Try Again",{
+        position:'top-right'
+      });
+      resetloginstate();
+     }
  }
 
 
