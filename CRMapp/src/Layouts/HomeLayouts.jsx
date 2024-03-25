@@ -64,7 +64,7 @@ export default function HomeLayout({children}){
                  </ul>
                </div>
         </div>
-        <div className="flex align-start justify-center">
+        <div className="flex align-start justify-center ml-20">
             <div className="w-3/4">
              { children}
             </div>
