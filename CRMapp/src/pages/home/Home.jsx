@@ -22,7 +22,7 @@ export default function Home(){
     
             <Cart 
             titletext='Open' 
-             status={ticketState.ticketDistribution.open / ticketState. ticketList.length}
+             status={ticketState.ticketDistribution.open / ticketState.downloadedtickets.length}
             quantity={ticketState.ticketDistribution.open}
             background="bg-yellow-300"
              fontcolor="text-black" 
@@ -34,7 +34,7 @@ export default function Home(){
 
             <Cart 
             titletext="Inprogress"
-            status={ticketState.ticketDistribution.inProgress / ticketState. ticketList.length}
+            status={ticketState.ticketDistribution.inProgress / ticketState.downloadedtickets.length}
             quantity={ticketState.ticketDistribution.inProgress}
              background="bg-orange-300"
               fontcolor="text-black"
@@ -46,7 +46,7 @@ export default function Home(){
 
             <Cart 
             titletext="Resolved" 
-            status={ticketState.ticketDistribution.resolved / ticketState. ticketList.length}
+            status={ticketState.ticketDistribution.resolved / ticketState.downloadedtickets.length}
             quantity={ticketState.ticketDistribution.resolved}
             background="bg-purple-300" 
             fontcolor="text-black" 
@@ -59,7 +59,7 @@ export default function Home(){
 
             <Cart 
             titletext="Onhold"
-            status={ticketState.ticketDistribution.onHold / ticketState. ticketList.length}
+            status={ticketState.ticketDistribution.onHold / ticketState.downloadedtickets.length}
             quantity={ticketState.ticketDistribution.onHold}
              background="bg-gray-300"
               fontcolor="text-black" 
@@ -71,7 +71,7 @@ export default function Home(){
 
             <Cart
              titletext="Cancelled" 
-             status={ticketState.ticketDistribution.cancelled / ticketState. ticketList.length}
+             status={ticketState.ticketDistribution.cancelled / ticketState.downloadedtickets.length}
             quantity={ticketState.ticketDistribution.cancelled}
            
              background="bg-blue-300" 

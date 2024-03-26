@@ -1,4 +1,4 @@
-
+import { FaCloudDownloadAlt } from "react-icons/fa";
 
 import HomeLayout from "../../src/Layouts/HomeLayouts";
 import useTickets from "../hooks/useTickets";
@@ -7,16 +7,17 @@ import useTickets from "../hooks/useTickets";
 export default function Dasboard(){
 
     const [ticketState] = useTickets();
-
+    
     return(
         <HomeLayout>
-            <div className="min-h-[90vh] ml-20 flex flex-col items-center justify-center gap-2">
+            <div className="min-h-[90vh] ml-20 flex flex-col items-center justify-center gap-2" >
+              
                 <div className="bg-yellow-500 w-full text-black text-center text-3xl py-4 font-bold hover:bg-yellow-300 transition-all ease-in-out duration-300">
-                     Tickets Records
+                     Tickets Records <FaCloudDownloadAlt  className="inline "/>
                 </div>
 
                 {/* table */}
-                <div className="flex flex-col w-full">
+                <div className="flex flex-col w-full" >
                     {/* title row */}
                     <div className="flex justify-between font-bold items-center gap-3 px-2 py-2 bg-purple-600">
                         <div className="table-title basis-[9%] justify-start">Ticket Id</div>
