@@ -10,7 +10,7 @@ module.exports = {
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
   settings: { react: { version: '18.2' } },
-  plugins: ['react-refresh', 'simple-import-sort'],
+  plugins: [ "@stylistic/eslint-plugin-js", 'react-refresh', 'simple-import-sort'],
   rules: {
     'simple-import-sort/imports': 'error',
     'semi':[1,'always'],
@@ -19,6 +19,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    "react/prop-types": "off"
+    "react/prop-types": "off",
+    "@stylistic/no-mixed-spaces-and-tabs": ["error", { "fix": true }]
   },
 }

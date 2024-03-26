@@ -4,16 +4,31 @@ import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import { MdPending } from "react-icons/md";
 import { MdCancel } from "react-icons/md";
 import { TbProgressBolt } from "react-icons/tb";
-
+import { Chart as ChartJS, ArcElement, Tooltip, Legend , Title} from "chart.js";
 import Cart from "../../components/Cart";
 import useTickets from "../../hooks/useTickets";
 import HomeLayout from "../../Layouts/HomeLayouts";
+import { Pie } from 'react-chartjs-2';
 
+
+ChartJS.register( ArcElement, Tooltip, Legend , Title);
 
 export default function Home(){
 
     
     const [ticketState]  = useTickets();
+
+    const piechartdata = {
+           labels : Object.keys(ticketState.ticketDistribution),
+           fontColor : "white",
+           datasets : [
+            {
+               data : Object.values(ticketState.ticketDistribution) ,
+               backgroundColor :["yellow" , "red", "green" , "gray", "orange" ],
+               borderColor : ["yellow" , "red","green" , "gray", "orange" ]   
+            }
+           ]
+    }
 
     return(
         <HomeLayout>
@@ -86,6 +101,17 @@ export default function Home(){
 
             </div>
           )}
+
+  
+        {/*  */}
+        <div className="flex justify-center items-center mt-10 gap-10">
+        <div className="w-80 h-80" >
+          <Pie 
+          data={piechartdata}
+          />
+        </div>
+
+        </div>
         </HomeLayout>
 
         );

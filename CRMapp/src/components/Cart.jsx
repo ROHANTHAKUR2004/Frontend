@@ -8,6 +8,7 @@ export default function Cart({children ,bordercolor="border-error", dividercolor
           navigate(`/dashboard?status=${titletext}`);
     }
     
+    const statuspercent = status*100;
     return(
         <div onClick={oncardclick} className={`hover:scale-110 hover:cursor-pointer transition-all ease-in-out duration-300 border-b-8 ${bordercolor}   w-64 h-44 ${background} flex flex-col justify-center items-center py-2 rounded-md`}>
 
@@ -21,7 +22,7 @@ export default function Cart({children ,bordercolor="border-error", dividercolor
                 <div className={`text-7xl ${fontcolor}`}>
                   {quantity}
                 </div>
-                <div className={`radial-progress ${fontcolor}`} style={{"--value":status*100}}>{status*100}%</div>
+                <div className={`radial-progress ${fontcolor}`} style={{"--value":status*100}}>{statuspercent.toString().substring(0,4)}%</div>
             </div>
 
         </div>
