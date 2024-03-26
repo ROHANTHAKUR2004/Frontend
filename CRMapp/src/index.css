@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .table-title {
+        @apply text-lg justify-center items-center  flex flex-wrap ;
+    }
+}

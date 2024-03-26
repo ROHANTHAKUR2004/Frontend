@@ -1,35 +1,23 @@
-import { useEffect } from "react";
+
 import { BiSolidLockOpen } from "react-icons/bi";
 import { IoCheckmarkDoneCircleSharp } from "react-icons/io5";
 import { MdPending } from "react-icons/md";
 import { MdCancel } from "react-icons/md";
 import { TbProgressBolt } from "react-icons/tb";
-import { useDispatch, useSelector } from "react-redux";
 
 import Cart from "../../components/Cart";
+import useTickets from "../../hooks/useTickets";
 import HomeLayout from "../../Layouts/HomeLayouts";
-import { getallticketsfortheuser } from "../../Redux/Slices/TicketSlice";
+
 
 export default function Home(){
 
-    const authState  = useSelector((state) => state.auth);
-    const ticketState  = useSelector((state) => state.tickets);
-
-    const dispatch = useDispatch();
-
-
-    async function  loadtickets(){
-       const response = await dispatch(getallticketsfortheuser());
-       console.log(response);
-    }
-
-    useEffect(()=>{
-       loadtickets();
-    },[authState.token]);
+    
+    const [ticketState]  = useTickets();
 
     return(
         <HomeLayout>
-
+              {ticketState && (
              <div className='mt-10 flex-wrap flex flex-row justify-center items-center gap-10   '>
     
             <Cart 
@@ -97,7 +85,7 @@ export default function Home(){
            
 
             </div>
-
+          )}
         </HomeLayout>
 
         );
