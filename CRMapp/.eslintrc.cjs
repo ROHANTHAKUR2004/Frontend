@@ -20,6 +20,6 @@ module.exports = {
       { allowConstantExport: true },
     ],
     "react/prop-types": "off",
-     "@stylistic/no-mixed-spaces-and-tabs": ["error", { "fix": true }]
+     //"@stylistic/no-mixed-spaces-and-tabs": ["error", { "fix": true }]
   },
 }

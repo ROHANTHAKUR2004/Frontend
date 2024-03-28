@@ -25,11 +25,6 @@ const initialState = {
 export const signup = createAsyncThunk("/auth/signup" , async (data) =>{
     try {
         const response =  await axiosInstance.post("auth/signup", data);
-        // toast.promise(response,{
-        //     loading: 'Submitting Form',
-        //     success: 'Successfully SignedUp',
-        //     error : 'Something Wrong , Try Again'
-        // });
         return  response;
     } catch (error) {
          console.log(error);

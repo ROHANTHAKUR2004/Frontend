@@ -4,6 +4,8 @@ import Login from '../pages/auth/Login';
 import Signup from "../pages/auth/Signup";
 import Dasboard from "../pages/Dashboard";
 import Home from "../pages/home/Home";
+import Listallusers from "../pages/users/Listallusers";
+import AuthRoutes from "./AuthRoutes";
 export default function MainRoutes(){
     return(
         <Routes>
@@ -11,6 +13,9 @@ export default function MainRoutes(){
             <Route path="/login" element={<Login/>}></Route>
             <Route path="/signup" element={<Signup/>}></Route>
             <Route path="/dashboard" element={<Dasboard/>}></Route>
+            <Route element={<AuthRoutes allowListedRoles={["admin"]} />} >
+                <Route path="/users" element={<Listallusers/>}/>
+            </Route>
         </Routes>
     );
 }
