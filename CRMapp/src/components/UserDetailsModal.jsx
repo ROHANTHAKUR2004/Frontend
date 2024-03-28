@@ -8,18 +8,21 @@ export default function UserDetailsModal({user, resetTable}){
 
     const [userdisplay, setuserdisplay] = useState(user);
 
-    async function handlestatuschange(e){
+    async function handleuserchange(e){
         try {
-        console.log(e.target.textContent);
-        const dropdown = document.getElementById("userstatus-dropdown");
+       // console.log(e.target.textContent);
+       const ul = e.target.parentNode.parentNode;
+       const name = ul.getAttribute("name");
+        const dropdown = document.getElementById(`${name}dropdown`);
         dropdown.open = !dropdown.open;
+        
         toast("Updating userstatus...");
         const response =  await axiosInstance.patch("user/updateUser", {
 
             userId : userdisplay.id,
             updates : {
                 ...userdisplay,
-                userStatus : e.target.textContent
+                [name]: e.target.textContent
             }
         },{
             headers :{
@@ -30,11 +33,13 @@ export default function UserDetailsModal({user, resetTable}){
             toast.success("Succefully updated user status");
             const user = response?.data?.result;
             setuserdisplay({
+                ...userdisplay,
                 name : user.name,
                 email : user.email,
                 userStatus : user.userStatus,
                 userType : user.userType,
                 clientName : user.clientName
+               
             });
             resetTable();
         }
@@ -52,9 +57,9 @@ export default function UserDetailsModal({user, resetTable}){
       <p className="py-4">Email:   <span className="text-yellow-500">{userdisplay.email}</span></p>
       <p className="py-4">Status :
          <span className="text-yellow-500">
-         <details className="dropdown ml-2" id="userstatus-dropdown">
+         <details className="dropdown ml-2" id="userStatusdropdown">
               <summary className="m-1 btn">{userdisplay.userStatus}</summary>
-              <ul  onClick={handlestatuschange} className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+              <ul name="userStatus" onClick={handleuserchange} className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                 <li><a>approved</a></li>
                 <li><a>suspended</a></li>
                 <li><a>rejected</a></li>
@@ -63,7 +68,18 @@ export default function UserDetailsModal({user, resetTable}){
        
          </span>
          </p>
-      <p className="py-4">Type :   <span className="text-yellow-500">{userdisplay.userType}</span></p>
+      <p className="py-4">Type : 
+        <span className="text-yellow-500">
+            <details className="dropdown ml-2" id="userTypedropdown">
+              <summary className="m-1 btn">{userdisplay.userType}</summary>
+              <ul name="userType" onClick={handleuserchange} className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                <li><a>customer</a></li>
+                <li><a>admin</a></li>
+                <li><a>engineer</a></li>
+              </ul>
+           </details>
+            </span>
+            </p>
       <p className="py-4">Client : <span className="text-yellow-500">{userdisplay.clientName}</span></p>
     </div>
     <form method="dialog" className="modal-backdrop">
