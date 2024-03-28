@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
 
+import UserDetailsModal from "../../components/UserDetailsModal";
 import axiosInstance from "../../config/axiosInstance";
 import HomeLayout from "../../Layouts/HomeLayouts";
 
@@ -45,7 +46,8 @@ export default function Listallusers(){
         email : '',
         userType :'',
         userStatus : '',
-        clientName : ''
+        clientName : '',
+        id : ''
     });
 
 
@@ -79,7 +81,8 @@ export default function Listallusers(){
                     email : row.email,
                     userType : row.userType,
                     userStatus : row.userStatus,
-                    clientName : row.clientName
+                    clientName : row.clientName,
+                    id : row._id
                 });
                 document.getElementById('user_details_modal').showModal() ;
             }}
@@ -87,19 +90,7 @@ export default function Listallusers(){
                data={userlist} 
               />}
 
-                  <dialog id="user_details_modal" className="modal">
-                    <div className="modal-box text-lg font-semibold">
-                      <h3 className="font-bold text-lg">User Details!</h3>
-                      <p className="py-4">Name :   <span className="text-yellow-500">{userdisplay.name}</span></p>
-                      <p className="py-4">Email:   <span className="text-yellow-500">{userdisplay.email}</span></p>
-                      <p className="py-4">Status : <span className="text-yellow-500"> {userdisplay.userStatus}</span></p>
-                      <p className="py-4">Type :   <span className="text-yellow-500">{userdisplay.userType}</span></p>
-                      <p className="py-4">Client : <span className="text-yellow-500">{userdisplay.clientName}</span></p>
-                    </div>
-                    <form method="dialog" className="modal-backdrop">
-                      <button>close</button>
-                    </form>
-                  </dialog>
+                 <UserDetailsModal resetTable={loadusers} key={userdisplay.email} user={userdisplay}/>
               </div>
          </HomeLayout>
        
