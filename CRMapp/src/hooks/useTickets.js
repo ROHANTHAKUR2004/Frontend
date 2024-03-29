@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSearchParams } from "react-router-dom";
 
-import { filtertickets,getallticketsfortheuser,  resetticketlist } from "../Redux/Slices/TicketSlice";
+import { filtertickets,getallticketsfortheuser,  getcreatedticketsofuser,  resetticketlist } from "../Redux/Slices/TicketSlice";
 
 export default function useTickets(){
 
@@ -14,7 +14,11 @@ export default function useTickets(){
 
     async function  loadtickets(){
         if(ticketState.downloadedtickets.length == 0){
+            if(authState.role == "customer"){
+                 await dispatch(getcreatedticketsofuser());
+            } else{
             await dispatch(getallticketsfortheuser());
+            }
         }
        
         if(searchparams.get("status")){
