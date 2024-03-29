@@ -63,6 +63,30 @@ export  const updateticket = createAsyncThunk('tickets/updateticket', async (tic
     }
 });
 
+
+export const createTicket = createAsyncThunk('tickets/createTicket', async (ticket)=>{
+      
+    try {
+        const response =  axiosInstance.post("ticket", 
+         ticket,
+        {
+           
+            headers :{
+                'x-access-token' :  localStorage.getItem('token')
+              }
+        });
+         toast.promise(response ,{
+               success : 'Sucessfully created the ticket',
+               loading : 'created ticket',
+               error : 'something went wrong'
+         });
+         return await response;
+    } catch (error) {
+        console.log(error);
+       
+    }
+});
+
 const ticketSlice = createSlice({
     name: 'tickets',
     initialState,
@@ -73,12 +97,12 @@ const ticketSlice = createSlice({
              if(status == "inprogress") status = "inProgress";
              if(status == "onhold")  status = "onHold";
              state.ticketList = state.downloadedtickets.filter((ticket)=> ticket.status == status); 
-           console.log('status is' , status);
+          // console.log('status is' , status);
         },
         
-        resetticketlist :(state) =>{
-            state.ticketList = state.downloadedtickets;
-        }
+         resetticketlist :(state) =>{
+          state.ticketList = state.downloadedtickets;
+         }
 
     },
     extraReducers : (builder) =>{
@@ -119,6 +143,22 @@ const ticketSlice = createSlice({
             state.downloadedtickets.forEach(ticket =>{ 
                 state.ticketDistribution[ticket.status] = state.ticketDistribution[ticket.status] + 1;
              });
+        })
+        .addCase(createTicket.fulfilled, (state , action) =>{
+            if(action?.payload?.data == undefined) return;
+            const newTicket = action.payload.data;
+            state.downloadedtickets.push(newTicket);
+            state.ticketList = state.downloadedtickets;
+            state.ticketDistribution =  {
+                open: 0,
+                inProgress: 0,
+                resolved: 0,
+                onHold: 0,
+                cancelled: 0
+            };
+            state.downloadedtickets.forEach(ticket => {
+                state.ticketDistribution[ticket.status] = state.ticketDistribution[ticket.status] + 1;
+            });
         });
     }
 });

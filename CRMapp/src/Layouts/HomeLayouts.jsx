@@ -9,8 +9,10 @@ import { logout } from "../Redux/Slices/AuthSlice";
 export default function HomeLayout({children}){
 
     const authState = useSelector((state) => state.auth);
+  
     const dispatch = useDispatch();
     const navigate = useNavigate();
+     
 
     async function onlogout(){
         dispatch(logout());
@@ -45,6 +47,9 @@ export default function HomeLayout({children}){
                    <li><Link to="/dashboard">Dashboard</Link></li>
 
                   {authState.role =="admin" && <li><Link to="/users">All Users</Link></li>}
+
+                  {authState.isloggedin && <li><Link to="/ticket/create">Create Ticket</Link></li>}
+
 
 
                   <li className="absolute bottom-8 w-3/4">

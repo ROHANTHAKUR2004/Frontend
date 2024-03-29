@@ -4,7 +4,7 @@ import axiosInstance from "../../config/axiosInstance";
 
 const initialState = {
     role : localStorage.getItem("role") || "",
-    data : localStorage.getItem("data")|| undefined,
+    data : JSON.parse(localStorage.getItem("data") )|| undefined,
     token : localStorage.getItem("token") || "",
     isloggedin : localStorage.getItem("isloggedin") || false
 };

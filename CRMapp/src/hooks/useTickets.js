@@ -18,11 +18,10 @@ export default function useTickets(){
         }
        
         if(searchparams.get("status")){
-            console.log(searchparams.get("status"));
-            dispatch(filtertickets({status :searchparams.get("status")}));
-        }else{
-            dispatch(resetticketlist());
-        }
+          dispatch(filtertickets({status :searchparams.get("status")}));
+             }else{
+             dispatch(resetticketlist());
+     }
     }
 
     useEffect(()=>{
