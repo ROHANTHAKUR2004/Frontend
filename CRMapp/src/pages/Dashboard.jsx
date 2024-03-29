@@ -1,15 +1,18 @@
+import { useState } from 'react';
 import DataTable from 'react-data-table-component';
 import { FaCloudDownloadAlt } from "react-icons/fa";
 import { usePDF } from 'react-to-pdf';
 
 import HomeLayout from "../../src/Layouts/HomeLayouts";
+import TicketsDetailModal from '../components/TicketsDetailModal';
 import useTickets from "../hooks/useTickets";
 
 
 export default function Dasboard(){
 
     const [ticketState] = useTickets();
-    const { toPDF , targetRef}  = usePDF({filename : 'page.pdf'})
+    const [selectedticket , setselectedticket] = useState({});
+    const { toPDF , targetRef}  = usePDF({filename : 'page.pdf'});
 
     const ExpandedComponent = ({ data }) => <pre>{JSON.stringify(data, null, 2)}</pre>;
     const columns = [
@@ -62,13 +65,19 @@ export default function Dasboard(){
                 </div>
                  
                <div ref={targetRef}>
-                {ticketState && <DataTable
+                {ticketState && 
+                <DataTable
+                onRowClicked={(row) =>{
+                    setselectedticket(row);
+                    document.getElementById('ticket_modal').showModal();
+                }}
                 columns={columns}
                 data={ticketState.ticketList}
                 expandableRows
 			    expandableRowsComponent={ExpandedComponent}
-               
-                />}
+                />
+                }
+                <TicketsDetailModal ticket={selectedticket} key={selectedticket._id}/>
               </div>
             </div>
         </HomeLayout>
