@@ -74,6 +74,7 @@ export default function Dasboard(){
                 columns={columns}
                 data={ticketState.ticketList}
                 expandableRows
+			    // eslint-disable-next-line no-mixed-spaces-and-tabs
 			    expandableRowsComponent={ExpandedComponent}
                 />
                 }
